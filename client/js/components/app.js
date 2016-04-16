@@ -1,10 +1,10 @@
-var React = require('react');
-var RouteHandler = require('react-router').RouteHandler;
-var Header = require('../components/header/app-header');
+import React from 'react';
+import RouteHandler from 'react-router'.RouteHandler;
+import Header from '../components/header/app-header';
 
-var App = React.createClass({
+const App = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       userId: 0,
       displayName: "",
@@ -31,9 +31,9 @@ var App = React.createClass({
     };
   },
 
-  componentDidMount: function() {
-    var context = this;
-    $.get('/profile', function(response){
+  componentDidMount() {
+    let context = this;
+    $.get('/profile', response => {
       context.setState({
         userId: response.id,
         displayName: response.displayName,
@@ -50,11 +50,11 @@ var App = React.createClass({
     });
   },
 
-  updateState: function(newState){
+  updateState(newState) {
     this.setState(newState);
   },
 
-  render: function() {
+  render() {
     return (
       <div className="app" id="application">
         <Header displayName={this.state.displayName} avatar={this.state.avatar} teams={this.state.teams} />
